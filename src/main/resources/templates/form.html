@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Agregar Nuevo Producto</title>
+		<meta charset="UTF-8">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	</head>
+	<body>
+		<div class="container mt-4">
+			<div class="col-sem-6">
+				<form th:action="@{/guardar}" th:object="${Producto}" method="post">
+    <div class="card">
+        <div class="card-header">
+            <h2>Agregar Nuevo Producto</h2>
+        </div>
+        <div class="card-body">
+            <!-- Validación para IdProducto -->
+            <div class="form-group">
+                <label for="IdProducto"><b>IdProducto (6 caracteres)</b></label>
+                <input type="text" th:field="*{IdProducto}" id="IdProducto" class="form-control" required pattern=".{6,6}" title="Debe tener 6 caracteres">
+                <div class="valid-feedback">Correcto</div>
+                <div class="invalid-feedback">Debe tener exactamente 6 caracteres</div>
+            </div>
+
+            <!-- Validación para Descripcion -->
+            <div class="form-group">
+                <label for="Descripcion"><b>Descripcion (1-50 caracteres)</b></label>
+                <input type="text" th:field="*{Descripcion}" id="Descripcion" class="form-control" required pattern=".{1,50}" title="Debe tener entre 1 y 50 caracteres">
+                <div class="valid-feedback">Correcto</div>
+                <div class="invalid-feedback">Debe tener entre 1 y 50 caracteres</div>
+            </div>
+
+            <!-- Validación para PrecioUnidad -->
+            <div class="form-group">
+                <label for="PrecioUnidad"><b>Precio Unitario (50-500)</b></label>
+                <input type="number" th:field="*{PrecioUnidad}" id="PrecioUnidad" class="form-control" required min="50" max="500">
+                <div class="valid-feedback">Correcto</div>
+                <div class="invalid-feedback">Debe estar entre 50 y 500</div>
+            </div>
+
+            <!-- Validación para Stock -->
+            <div class="form-group">
+                <label for="Stock"><b>Stock (Mayor a 0)</b></label>
+                <input type="number" th:field="*{Stock}" id="Stock" class="form-control" required min="1">
+                <div class="valid-feedback">Correcto</div>
+                <div class="invalid-feedback">Debe ser mayor a 0</div>
+            </div>
+
+            <!-- Validación para Estado -->
+            <div class="form-group">
+                <label for="Estado"><b>Estado (0 o 1)</b></label>
+                <input type="text" th:field="*{Estado}" id="Estado" class="form-control" required pattern="[01]" title="Debe ser 0 o 1">
+                <div class="valid-feedback">Correcto</div>
+                <div class="invalid-feedback">Debe ser 0 o 1</div>
+            </div>
+
+            <div class="card-footer">
+                
+                <input type="submit" value="Guardar" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+</form>
+	
+
+			</div>
+		</div>
+	
+		
+	</body>
+</html>
